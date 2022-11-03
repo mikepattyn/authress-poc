@@ -1,0 +1,46 @@
+doctype html
+html
+    head
+        if(process.env.APPSETTING_NODE_ENV == "development")
+            title="Flyingdarts Debug"
+        else
+            title="Flyingdarts"
+        style
+            include ../stylesheets/style.css
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap.min.css" integrity="sha512-CpIKUSyh9QX2+zSdfGP+eWLx23C8Dj9/XmHjZY2uDtfkdLGo0uY12jgcnkX9vXOgYajEKb/jiw67EYm+kBf+6g==" crossorigin="anonymous" referrerpolicy="no-referrer")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/js/bootstrap.min.js")
+    body
+        div(class='top-bar')
+            div(class='pepe')
+
+        div
+            if !token
+                div(class='header-row')
+                    header(class='header-div')
+                        h1(class='header-title') Welcome to Flyingdarts
+            div(class='navigation-div')
+                if token
+                    ul(id='menu')
+                        a(href='/home')
+                            li Home
+                        a(href='/login')
+                            li Login
+
+                    ul
+                        li
+                            form(action="/logout" method="GET")
+                                button(id="logout-btn" type="submit" class="logout-btn btn btn-danger" onclick='showLoader()') Logout
+        p(class='versionNumber')=version
+
+        div(class='container')
+            block content
+        
+        script.
+            $('.global-alert-close').click(function (e) {
+                $('.global-alert-wrapper').toggleClass('close-alert');
+                $('.global-alert').toggleClass('close-alert');
+            });
+
+        div(id="loaderBackground" style='display: none;')
+            div(id="loader")

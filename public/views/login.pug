@@ -1,0 +1,35 @@
+extends layout 
+
+block content
+    .container
+        .row
+            form.form-signin.mg-btm
+                .title-container 
+                    h3.heading-desc Login to Bootsnipp
+                    button.close.pull-right(type="button", aria-hidden="true") ×
+                .social-box
+                    .row.mg-btm
+                        .col-md-12
+                            a.btn.btn-primary.btn-block(href="#")
+                                i.icon-facebook
+                                | Login with Facebook
+                    .row
+                        .col-md-12
+                            a.btn.btn-info.btn-block(href="#")
+                                i.icon-twitter
+                                | Login with Twitter
+                .main
+                    input.form-control(type="text", placeholder="Email", autofocus)
+                    input.form-control(type="password", placeholder="Password")
+                    | 
+                    | Are you a business?
+                    a(href="")  Get started here
+                    span.clearfix
+                .login-footer
+                    .row
+                        .col-xs-6.col-md-6
+                            .left-section
+                                a(href="") Forgot your password?
+                                a(href="") Sign up now
+                        .col-xs-6.col-md-6.pull-right
+                            button.btn.btn-large.btn-danger.pull-right(type="submit") Login

@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import { inject } from "inversify"
-import { all, BaseHttpController, controller, httpGet, interfaces } from "inversify-express-utils"
+import { BaseHttpController, controller, httpGet, interfaces } from "inversify-express-utils"
 import { OkResult } from "inversify-express-utils/lib/results"
 import { keyof } from "ts-keyof"
 import { Logger } from "../logger"

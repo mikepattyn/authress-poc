@@ -1,10 +1,14 @@
 import 'reflect-metadata';
+import express from 'express'
+import path from 'path'
 import bodyParser from 'body-parser'
 import * as pkg from '../package.json';
 import { Container } from 'inversify';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import { Logger } from './logger';
+import './controllers/auth.controller';
 import './controllers/status.controller';
+import './controllers/home.controller';
 import { env } from './environment';
 
 // Setup DI
@@ -21,6 +25,10 @@ server.setConfig((app) => {
 });
 
 let app = server.build();
+
+app.set('views', path.join(__dirname, '../public/views'))
+app.set('view engine', 'pug')
+app.use(express.static(path.join(__dirname, "/../public")))
 
 // Serve the application at the given port
 
