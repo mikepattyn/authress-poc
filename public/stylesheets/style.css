@@ -481,8 +481,8 @@ h1, h2, h3, h4, p, a, table {
     display:block;
     background-color: #f7f7f7;
     -moz-box-shadow: 0 0 3px 3px #888;
-      -webkit-box-shadow: 0 0 3px 3px #888;
-      box-shadow: 0 0 3px 3px #888;
+    -webkit-box-shadow: 0 0 3px 3px #888;
+    box-shadow: 0 0 3px 3px #888;
     border-radius:2px;
     margin-top: 110px !important;
   }
@@ -560,6 +560,19 @@ h1, h2, h3, h4, p, a, table {
   button.close {
     height: 40px;
     border: none;
-    margin-right: 10px;
-    margin-top: 10px;
+    margin-right: 20px;
+    margin-top: 20px;
+  }
+
+  .steam-login-btn {
+    max-height: 50px;
+    background-color: none !important;
+    background: none !important;
+    border: none !important;
+  }
+  .gmail-login-btn {
+    max-height: 46px;
+    background-color: none !important;
+    background: none !important;
+    border: none !important;
   }

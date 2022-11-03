@@ -5,7 +5,7 @@ import { Logger } from "../logger";
 import { LoginClient } from "authress-login";
 
 @injectable()
-export class LoggerMiddleware extends BaseMiddleware {
+export class AuthressMiddleware extends BaseMiddleware {
     private _loginClient: LoginClient;
     constructor(@inject(Logger) private _logger: Logger) {
         super()

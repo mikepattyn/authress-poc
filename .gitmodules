@@ -1,0 +1,3 @@
+[submodule "authress-login.js"]
+	path = authress-login.js
+	url = https://github.com/Authress/authress-login.js
