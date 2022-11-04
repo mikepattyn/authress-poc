@@ -6,10 +6,9 @@ import { LoginClient } from "authress-login";
 
 @injectable()
 export class AuthressMiddleware extends BaseMiddleware {
-    private _loginClient: LoginClient;
-    constructor(@inject(Logger) private _logger: Logger) {
+    
+    constructor(@inject(LoginClient) private _loginClient: LoginClient) {
         super()
-        this._loginClient = new LoginClient({ authressLoginHostUrl: 'https://hkqhd2lt2b4o9wisuxsph46og5h14p1i.login.authress.io', applicationId: 'app_txSV8xQhQehRFqNtw8Zg3s' })
     }
     public async handler(
         req: express.Request,

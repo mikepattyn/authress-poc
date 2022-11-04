@@ -10,10 +10,12 @@ import './controllers/auth.controller';
 import './controllers/status.controller';
 import './controllers/home.controller';
 import { env } from './environment';
+import { AuthressLoginClient } from './clients/authress-login.client';
 
 // Setup DI
 let container = new Container();
 container.bind<Logger>(Logger).to(Logger);
+container.bind<AuthressLoginClient>(AuthressLoginClient).to(AuthressLoginClient)
 
 // Server configuration
 let server = new InversifyExpressServer(container, null, null, null, null);

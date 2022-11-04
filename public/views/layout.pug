@@ -15,12 +15,10 @@ html
             div(class='pepe')
 
         div
-            if !token
                 div(class='header-row')
                     header(class='header-div')
                         h1(class='header-title') Welcome to Flyingdartz
-            div(class='navigation-div')
-                if token
+                div(class='navigation-div')
                     ul(id='menu')
                         a(href='/home')
                             li Home

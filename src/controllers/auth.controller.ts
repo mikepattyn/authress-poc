@@ -1,12 +1,13 @@
 import { Request, Response } from "express"
 import { inject } from "inversify"
-import { BaseHttpController, controller, httpGet, interfaces } from "inversify-express-utils"
+import { BaseHttpController, controller, httpGet, httpPost, interfaces } from "inversify-express-utils"
 import { Logger } from "../logger"
-import { LoginClient } from 'authress-login';
+import { LoginClient, AuthenticationParameters } from 'authress-login';
+import { AuthressLoginClient } from "../clients/authress-login.client";
 
 @controller('/auth')
 export class LoginController extends BaseHttpController implements interfaces.Controller {
-    constructor(@inject(Logger) private logger: Logger, @inject(LoginClient) private loginClient: LoginClient) { 
+    constructor(@inject(Logger) private logger: Logger, @inject(AuthressLoginClient) private authressLoginClient: AuthressLoginClient) { 
         super() 
     }
 
@@ -15,13 +16,26 @@ export class LoginController extends BaseHttpController implements interfaces.Co
         return res.render('login', {  })
     }
 
-    @httpGet('/post')
+    @httpGet('/login')
     private async login(req: Request, res: Response) {
-        await this.loginClient.authenticate({ connectionId: 'SELECTED_CONNECTION_ID', redirectUrl: window.location.href });
+        this.logger.log(`${req.query}`)
+        let authParams: AuthenticationParameters;
+        if (typeof window !== 'undefined') {
+            authParams = {
+                connectionId: 'app_txSV8xQhQehRFqNtw8Zg3s', 
+                redirectUrl: window.location.href
+            }
+        } else {
+            authParams = {
+                connectionId: 'app_txSV8xQhQehRFqNtw8Zg3s', 
+                redirectUrl: "http://localhost:4444"
+            }
+        }
+        await this.authressLoginClient.getInstance().authenticate(authParams);
         return res.render('login', {  })
     }
     
-    @httpGet('/register')
+    @httpPost('/register')
     private register(req: Request, res: Response) {
         return res.render('register', {  })
     }
